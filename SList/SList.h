@@ -34,3 +34,7 @@ void SListErase(SLTNode** phead, SLTNode* pos);
 //某位置后插入删除
 void SListInsertAfter(SLTNode* pos, SListDataType x);
 void SListEraseAfter(SLTNode* pos);
+
+//链表的销毁
+void SLTDestory1(SLTNode* head);
+void SLTDestory2(SLTNode** phead);

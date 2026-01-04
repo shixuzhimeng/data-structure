@@ -103,7 +103,7 @@ void SListInsert(SLTNode** phead, SLTNode* pos, SListDataType x)
     }
     else
     {
-        SLTNode* prev = (SLTNode*)malloc(sizeof(SLTNode));
+        SLTNode* prev = *phead;
         while(prev != pos)
         {
             prev = prev->next;

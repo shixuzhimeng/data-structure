@@ -6,6 +6,7 @@ void SLTPrintf(SLTNode* phead)
     while(cur != NULL)
     {
         printf("%d->", cur->data);
+        cur = cur->next;
     }
 }
 
@@ -15,7 +16,7 @@ SLTNode* BuySLTNode(SListDataType x)
     if(newnode == NULL)
     {
         perror("malloc fail");
-        return ;
+        return NULL;
     }
     newnode->data = x;
     newnode->next = NULL;
@@ -27,7 +28,7 @@ void SLTPushBack(SLTNode** phead, SListDataType x)
     SLTNode* newnode = BuySLTNode(x);
     if(*phead == NULL)
     {
-        *phead == newnode;
+        *phead = newnode;
     }
     else
     {
@@ -61,7 +62,7 @@ void SLTPopBack(SLTNode** phead)
     else
     {
         SLTNode* tail =*phead;
-        while(tail->next->next != NULL)
+        while(tail->next != NULL)
         {
             tail = tail->next;
         }
@@ -104,7 +105,7 @@ void SListInsert(SLTNode** phead, SLTNode* pos, SListDataType x)
     else
     {
         SLTNode* prev = *phead;
-        while(prev != pos)
+        while(prev != NULL && prev != pos)
         {
             prev = prev->next;
         }
@@ -120,7 +121,7 @@ void SListErase(SLTNode** phead, SLTNode* pos)
     assert(phead);
     if(*phead == pos)
     {
-        SLTPopBack(phead);
+        SLTPopFront(phead);
     }
     else
     {

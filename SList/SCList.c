@@ -12,12 +12,12 @@ struct Node* createNode(int value)
 {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = value;
-    newNode->next = newNode; // 初始时节点的next指向自己
+    newNode->next = newNode;
     return newNode;
 }
 
 // 插入节点到链表头部
-void insertHead(struct Node** head, int value) 
+void insertHead(struct Node** head, int value)
 {
     struct Node* newNode = createNode(value);
     if(*head == NULL)

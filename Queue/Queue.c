@@ -21,13 +21,13 @@ void QueueDestroy(Queue* pq)
     }
 
     pq->head = pq->tail = NULL;
-    pq->tail = 0;
+    pq->size = 0;
 }
 
 void QueuePush(Queue* pq,QDataType x)
 {
     QNode* newNode = (QNode*)malloc(sizeof(QNode));
-    if(newNode)
+    if(newNode == NULL)
     {
         perror("malloc failed");
         return ;
@@ -75,7 +75,7 @@ void QueuePop(Queue* pq)
     pq->size--;
 }
 
-void QueueSize(Queue* pq)
+int QueueSize(Queue* pq)
 {
     assert(pq);
 

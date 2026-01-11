@@ -1,6 +1,5 @@
 #include "Queue.h"
 
-
 void QueueInit(Queue* pq)
 {
     assert(pq);
@@ -47,12 +46,61 @@ void QueuePush(Queue* pq,QDataType x)
         pq->tail->next = newNode;
         pq->tail = newNode;
     }
+
+    pq->size++;
 }
 
-void QueuePop(Queue* pq);
+void QueuePop(Queue* pq)
+{
+    assert(pq);
+    assert(pq->head != NULL);
+    // QNode* next = pq->head->next;
+    // free(pq->head);
+    // pq->head = next;
+    // if(pq->head == NULL)
+    //     pq->tail = NULL;
 
-void QueueSize(Queue* pq);
-bool QueueEmpty(Queue* pq);
+    if(pq->head->next == NULL)
+    {
+        free(pq->head);
+        pq->head = pq->tail = NULL;
+    }
+    else
+    {
+        QNode* next = pq->head->next;
+        free(pq->head);
+        pq->head = next;
+    }
 
-QDataType QueueFront(Queue* pq);
-QDataType QueueBack(Queue* pq);
+    pq->size--;
+}
+
+void QueueSize(Queue* pq)
+{
+    assert(pq);
+
+    return pq->size;
+}
+
+bool QueueEmpty(Queue* pq)
+{
+    assert(pq);
+
+    return pq->size == 0;
+}
+
+QDataType QueueFront(Queue* pq)
+{
+    assert(pq);
+    assert(!QueueEmpty(pq));
+
+    return pq->head->data;
+}
+
+QDataType QueueBack(Queue* pq)
+{
+    assert(pq);
+    assert(!QueueEmpty(pq));
+
+    return pq->tail->data;
+}

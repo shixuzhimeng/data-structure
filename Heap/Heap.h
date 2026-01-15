@@ -13,8 +13,11 @@ typedef struct Heap
 
 void HeapInit(HP* php);
 void HeapPush(HP* php, HPDataType x);
-
 void HeapPop(HP* php);
+
+void AdjustUp(HPDataType* a, int child);
+void AdjustDown(HPDataType* a, int n, int parent);
+
 HPDataType HeapTop(HP* php);
 bool HeapEmpty(HP* php);
 int HeapSize(HP* php);

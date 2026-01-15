@@ -65,7 +65,7 @@ void HeapPush(HP* php, HPDataType x)
 }
 
 //左右子树都是大堆/小堆
-void HeapDown(HPDataType* a, int n, int parent)
+void AdjustDown(HPDataType* a, int n, int parent)
 {
     int child = parent * 2 + 1;
     while(child < n)

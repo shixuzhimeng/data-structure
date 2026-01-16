@@ -14,6 +14,37 @@ void HeapInit(HP* php)
     php->capacity = 4;
 }
 
+void HeapInitArray(HP* php, int *a, int n)
+{
+    assert(php);
+    php->a = (HPDataType*)malloc(sizeof(HPDataType));
+    if(php->a == NULL)
+    {
+        perror("malloc failed");
+        return ;
+    }
+
+    php->size = 0;
+    php->capacity = n;
+
+    //建堆
+    for(int i = (n-2)/2; i >= 0; --i)
+    {
+        AdjustDown(php->a, php->size, i);
+    }
+}
+
+//销毁
+void HeapDestory(HP* php)
+{
+    assert(php);
+
+    free(php->a);
+    php->a = NULL;
+    php->capacity = php->size = 0;
+}
+
+//交换
 void Swap(HPDataType* p1, HPDataType* p2)
 {
     HPDataType x = *p1;

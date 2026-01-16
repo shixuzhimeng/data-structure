@@ -29,6 +29,7 @@ void HeapSort(int* a, int n)
     }
     
     //向下调整完成堆排序
+    //时间复杂度O(N*logN)
     int end = n - 1;
     while(end > 0)
     {

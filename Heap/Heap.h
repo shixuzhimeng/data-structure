@@ -12,6 +12,9 @@ typedef struct Heap
 }HP;
 
 void HeapInit(HP* php);
+void HeapInitArray(HP* php, int *a, int n);
+void HeapDestory(HP* php);
+
 void HeapPush(HP* php, HPDataType x);
 void HeapPop(HP* php);
 

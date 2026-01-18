@@ -62,7 +62,7 @@ void AdjustUp(HPDataType* a, int child)
         if(a[child] > a[parent]) //大根堆
         //if(a[child] < a[parent]) //小根堆
         {
-            Swap(&a[child], a[parent]);
+            Swap(&a[child], &a[parent]);
             child = parent;
             parent = (child - 1)/2;
         }

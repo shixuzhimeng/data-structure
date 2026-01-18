@@ -5,10 +5,10 @@ void PrintTopK(const char* file, int k)
 {
     //建堆--用a中的前K个元素建堆
     int* topK = (int*)malloc(sizeof(int)*k);
-    assetr(topK);
+    assert(topK);
 
-    const char* file = "data.txt";
-    FILE* fout = fopen(file, "w");
+    //const char* file = "data.txt";
+    FILE* fout = fopen(file, "r");
     if(fout == NULL)
     {
         perror("fopen failed");
@@ -44,7 +44,7 @@ void PrintTopK(const char* file, int k)
     }
     printf("\n");
 
-    free(fout);
+    free(topK);
     fclose(fout);
 }
 
@@ -71,7 +71,7 @@ void CreatNData()
 int main()
 {
     CreatNData();
-    PrintfTopK("data.txt", 10);
+    PrintTopK("data.txt", 10);
 
     return 0;
 }

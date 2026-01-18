@@ -24,7 +24,7 @@ void HeapInitArray(HP* php, int *a, int n)
         return ;
     }
 
-    php->size = 0;
+    php->size = n;
     php->capacity = n;
 
     //建堆
@@ -102,13 +102,13 @@ void AdjustDown(HPDataType* a, int n, int parent)
     while(child < n)
     {
         //选出左右孩子中最大的一个
-        if(child + 1 < n && a[child + 1] > a[child])
+        if(child + 1 < n && a[child + 1] < a[child])
         {
             ++child;
         }
 
-        if(a[child] > a[parent]) //大根堆
-        //if(a[child] < a[parent]) //小根堆
+        //if(a[child] > a[parent]) //大根堆
+        if(a[child] < a[parent]) //小根堆
         {
             Swap(&a[child], &a[parent]);
             parent = child;

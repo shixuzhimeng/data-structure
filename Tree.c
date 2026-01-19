@@ -15,6 +15,12 @@
 //     int data;
 // };
 
+typedef struct TreeNode
+{
+    int data;               // 存储节点数据
+    struct TreeNode* firstChild;  // 指向第一个子节点的指针
+    struct TreeNode* nextSibling; // 指向下一个兄弟节点的指针
+} TreeNode;
 
 int main()
 {
